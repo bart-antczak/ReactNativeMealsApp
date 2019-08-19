@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import { useScreens } from 'react-native-screens';
 
 const fetchFonts = () => {
   Font.loadAsync({
@@ -11,6 +12,8 @@ const fetchFonts = () => {
 };
 
 import MealsNavigator from './navigation/MealsNavigation';
+
+useScreens();
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
