@@ -1,10 +1,6 @@
 import React from 'react';
 import {
-    View,
-    Text,
     FlatList,
-    StyleSheet,
-    TouchableOpacity
 } from 'react-native';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons'
 
@@ -53,14 +49,6 @@ CategoriesScreen.navigationOptions = navData => {
     }
 
 };
-
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
 
 export default CategoriesScreen;
 

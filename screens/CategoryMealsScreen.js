@@ -1,31 +1,35 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 
-import { CATEGORIES, MEALS } from '../data/dummy-data';
+import {CATEGORIES} from '../data/dummy-data';
 import MeatList from '../components/MealList';
 
 const CategoryMealScreen = props => {
-  const catId = props.navigation.getParam('categoryId');
+    const catId = props.navigation.getParam('categoryId');
 
-  const displayedMeals = MEALS.filter(
-    meal => meal.categoryIds.indexOf(catId) >= 0
-  );
+    const availableMeals = useSelector(state => state.meals.filteredMeals);
 
-  return (
-      <MeatList
-        listData={displayedMeals}
-        navigation={props.navigation}
-      />
-  );
+    const displayedMeals = availableMeals.filter(
+        meal => meal.categoryIds.indexOf(catId) >= 0
+    );
+
+    return (
+        <MeatList
+            listData={displayedMeals}
+            navigation={props.navigation}
+        />
+    );
 };
 
 CategoryMealScreen.navigationOptions = navigationData => {
-  const catId = navigationData.navigation.getParam('categoryId');
+    const catId = navigationData.navigation.getParam('categoryId');
 
-  const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
+    const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
 
-  return {
-    headerTitle: selectedCategory.title
-  };
+    return {
+        headerTitle: selectedCategory.title
+    };
 };
+
 
 export default CategoryMealScreen;
